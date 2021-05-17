@@ -1,0 +1,186 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - corona_help
+  - chitchat
+  - out_of_scope
+  - pin_code:
+      use_entities:
+        - pin_code
+  - category:
+      use_entities:
+        - category
+  - confirm_pin_code:
+      use_entities:
+        - confirm_pin_code
+  - confirm_resource_category:
+      use_entities:
+        - confirm_resource_category
+
+entities:
+- pin_code
+- category
+- confirm_pin_code
+- confirm_resource_category
+
+slots:
+  pin_code:
+    type: text
+  category:
+    type: text
+  confirm_pin_code:
+    type: text
+  confirm_resource_category:
+    type: text
+
+actions:
+  - action_submit
+  - validate_user_details_form
+
+forms:
+  user_details_form:
+    pin_code:
+    - type: from_entity
+      entity: pin_code
+    category:
+    - type: from_entity
+      entity: category
+    confirm_pin_code:
+    - type: from_entity
+      entity: confirm_pin_code
+    confirm_resource_category:
+    - type: from_entity
+      entity: confirm_resource_category
+    
+responses:
+  utter_greet:
+  - text: "Hey human!"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_chitchat/ask_name:
+  - image: "https://i.imgur.com/zTvA58i.jpeg"
+    text: Hello, my name is Retrieval Bot.
+  - text: I am called Retrieval Bot!
+
+  utter_chitchat/ask_weather:
+  - text: Oh, it does look sunny right now in Berlin.
+    image: "https://i.imgur.com/vwv7aHN.png"
+  - text: I am not sure of the whole week but I can see the sun is out today.
+
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+
+  utter_out_of_scope:
+  - text: "Sorry, I didn't get it!!!"
+
+  utter_ask_pin_code:
+  - text: "Please share your PIN code"
+
+  utter_ask_category:
+  - text: "What are you looking for?"
+    buttons:
+    - title: "Free Food"
+      payload: '/category{{"category": "Free Food"}}'
+
+    - title: "CoVID-19 Testing Lab"
+      payload: '/category{{"category": "CoVID-19 Testing Lab"}}'
+
+    - title: "Hospitals and Centers"
+      payload: '/category{{"category": "Hospitals and Centers"}}'
+
+    - title: "Fundraisers"
+      payload: '/category{{"category": "Fundraisers"}}'
+
+    - title: "Delivery [Vegetables, Fruits, Groceries, Medicines, etc.]"
+      payload: '/category{{"category": "Delivery [Vegetables, Fruits, Groceries, Medicines, etc.]"}}'
+
+    - title: "Police"
+      payload: '/category{{"category": "Police"}}'
+
+    - title: "Government Helpline"
+      payload: '/category{{"category": "Government Helpline"}}'
+
+    - title: "Mental well being and Emotional Support"
+      payload: '/category{{"category": "Mental well being and Emotional Support"}}'
+
+    - title: "Accommodation and Shelter Homes"
+      payload: '/category{{"category": "Accommodation and Shelter Homes"}}'
+
+    - title: "Senior Citizen Support"
+      payload: '/category{{"category": "Senior Citizen Support"}}'
+
+    - title: "Transportation"
+      payload: '/category{{"category": "Transportation"}}'
+
+    - title: "Community Kitchen"
+      payload: '/category{{"category": "Community Kitchen"}}'
+
+    - title: "Ambulance"
+      payload: '/category{{"category": "Ambulance"}}'
+
+    - title: "Fire Brigade"
+      payload: '/category{{"category": "Fire Brigade"}}'
+
+    - title: "Quarantine Facilty"
+      payload: '/category{{"category": "Quarantine Facilty"}}'
+
+    - title: "Helpline for Cyclone Amphan"
+      payload: '/category{{"category": "Helpline for Cyclone Amphan"}}'
+
+    - title: "Fever Clinic"
+      payload: '/category{{"category": "Fever Clinic"}}'
+
+    - title: "Other"
+      payload: '/category{{"category": "Other"}}'
+
+  utter_ask_confirm_pin_code:
+  - text: "Do you want to get the resources for - {pin_code}. Press Yes to confirm and No to change another pincode"
+    buttons:
+    - title: "Yes"
+      payload: '/confirm_pin_code{{"confirm_pin_code": "Yes"}}'
+
+    - title: "No"
+      payload: '/confirm_pin_code{{"confirm_pin_code": "No"}}'
+
+  utter_ask_confirm_resource_category:
+  - text: "Do you want to get {category} resources. Press Yes to confirm and No to change."
+    buttons:
+    - title: "Yes"
+      payload: '/confirm_resource_category{{"confirm_resource_category": "Yes"}}'
+
+    - title: "No"
+      payload: '/confirm_resource_category{{"confirm_resource_category": "No"}}'
+
+  utter_submit:
+  - text: "Show results for {pin_code} and {category}\n
+          - Contact: {contact}\n
+          - Description: {description}\n
+          - Organisation: {organisation}\n
+          - Phone: {phone}\n
+          - State: {state}"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

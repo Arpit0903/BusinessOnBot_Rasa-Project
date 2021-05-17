@@ -1,0 +1,177 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - []
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: chitchat/ask_name
+  examples: |
+    - What is your name?
+    - May I know your name?
+    - What do people call you?
+    - Do you have a name for yourself?
+
+- intent: chitchat/ask_weather
+  examples: |
+    - What's the weather like today?
+    - Does it look sunny outside today?
+    - Oh, do you mind checking the weather for me please?
+    - I like sunny days in Berlin.
+
+- intent: out_of_scope
+  examples: |
+    - Who is the prime minister of India?
+    - What is 0 divided by 0?
+    - Which state is the capital of India?
+    - Who is the president of USA?
+    - Where do you live?
+    - what is your age?
+    - What is 2+2
+    - what is 3 multiplied by 9
+    - what 5 plus 9
+
+- intent: corona_help
+  examples: |
+    - Corona help
+    - covid help
+    - help corona 
+    - corona help
+    - COVID-19 help
+    - covid-19 help
+    - coronavirus help
+
+- intent: pin_code
+  examples: |
+    - my pin code is [110001]{"entity": "pin_code", "value": "110001"}
+    - [500081]{"entity": "pin_code", "value": "500081"}
+    - [600036]{"entity": "pin_code", "value": "600036"}
+    - pin code is [600036]{"entity": "pin_code", "value": "600036"}
+    - pin code is [500081]{"entity": "pin_code", "value": "500081"}
+    - [110002]{"entity": "pin_code", "value": "110002"}
+    - [Free Food]{"entity": "category", "value": "Free Food"} in [500081]{"entity": "pin_code", "value": "500081"}
+    - [Covid-19 testing labs]{"entity": "category", "value": "CoVID-19 Testing Lab"} in [110001]{"entity": "pin_code", "value": "110001"}
+    - [Hospitals and Centers]{"entity": "category", "value": "Hospitals and Centers"} in [600036]{"entity": "pin_code", "value": "600036"}
+    - I am looking for [Free Food]{"entity": "category", "value": "Free Food"} in [110001]{"entity": "pin_code", "value": "110001"}
+    - I am looking for [Covid-19 testing labs]{"entity": "category", "value": "CoVID-19 Testing Lab"} in [500081]{"entity": "pin_code", "value": "500081"}
+    - [Free Food]{"entity": "category", "value": "Free Food"} in [580003]{"entity": "pin_code", "value": "580003"}
+    - [CoVID-19 Testing Lab]{"entity": "category", "value": "CoVID-19 Testing Lab"} in [110001]{"entity": "pin_code", "value": "110001"}
+    - [Fundraisers]{"entity": "category", "value": "Fundraisers"} in [570004]{"entity": "pin_code", "value": "570004"}
+
+- intent: category
+  examples: |
+    - [CoVID-19 Testing Lab]{"entity": "category", "value": "CoVID-19 Testing Lab"}
+    - [Free Food]{"entity": "category", "value": "Free Food"}
+    - [Fundraisers]{"entity": "category", "value": "Fundraisers"}
+    - [Hospitals and Centers]{"entity": "category", "value": "Hospitals and Centers"}
+    - [Delivery]{"entity": "category", "value": "Delivery"}
+    - [Police]{"entity": "category", "value": "Police"}
+    - [Government Helpline]{"entity": "category", "value": "Government Helpline"}
+    - [Mental well being and Emotional Support]{"entity": "category", "value": "Mental well being and Emotional Support"}
+    - [Accomodation and Shelter Homes]{"entity": "category", "value": "Accomodation and Shelter Homes"}
+    - [Senior Citizen Support]{"entity": "category", "value": "Senior Citizen Support"}
+    - [Transportation]{"entity": "category", "value": "Transportation"}
+    - [Community Kitchen]{"entity": "category", "value": "Community Kitchen"}
+    - [Ambulance]{"entity": "category", "value": "Ambulance"}
+    - [Fire Brigade]{"entity": "category", "value": "Fire Brigade"}
+    - [Quarantine Faciltiy]{"entity": "category", "value": "Quarantine Facility"}
+    - [Helpline for Cyclone Amphan]{"entity": "category", "value": "Helpline for Cyclone Amphan"}
+    - [Fever Clinci]{"entity": "category", "value": "Fever Clinic"}
+    - [Other]{"entity": "category", "value": "Other"}
+
+- intent: confirm_pin_code
+  examples: |
+    - [Yes]{"entity": "confirm_pin_code", "value": "Yes"}
+    - [No]{"entity": "confirm_pin_code", "value": "No"}
+
+- intent: confirm_resource_category
+  examples: |
+    - [Yes]{"entity": "confirm_resource_category", "value": "Yes"}
+    - [No]{"entity": "confirm_resource_category", "value": "No"}
